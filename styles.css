@@ -1,0 +1,297 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css";
+
+:root {
+  --header-height: 3rem;
+
+  --purple-accent: hsl(279 100% 57%);
+  --purple-shadow-light: hsl(279 100% 57% / 0.2);
+}
+
+/* resets */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* main css */
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+/* Remove the background color from the dark mode */
+body {
+  padding-top: var(--header-height);
+  background-color: transparent;
+  font-family: Arial, sans-serif;
+}
+
+/* button styles */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  padding: 1em 2em;
+  border: 2px solid var(--purple-accent);
+  border-radius: 0.5em;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--purple-accent);
+
+  transition: all 0.2s linear;
+}
+
+.btn:hover {
+  background-color: var(--purple-accent);
+  color: white;
+}
+
+.btn > * {
+  color: inherit;
+  transition: inherit;
+}
+
+.btn i {
+  font-size: 2rem;
+}
+
+/* Particles.js background */
+#particles-js {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  z-index: -1;
+}
+
+#particles-js,
+header {
+  background-color: hsl(0 0% 7%);
+}
+
+/* Navigation bar */
+header {
+  position: fixed;
+  inset: 0 0 auto;
+
+  display: flex;
+  justify-content: flex-end;
+
+  height: var(--header-height);
+  padding-inline: 1rem;
+}
+
+header nav {
+  display: flex;
+  gap: 0.5rem;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+header nav a {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  padding-inline: 0.5em;
+
+  color: #999;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #f4f4f4;
+}
+
+header nav a::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0.2rem;
+
+  height: 2px;
+  background-color: var(--purple-accent);
+
+  scale: 0 1;
+  transition: scale 0.3s;
+  transform-origin: right;
+}
+
+header nav a:hover::before {
+  scale: 1 1;
+  transform-origin: left;
+}
+
+/* Center the content */
+main {
+  display: grid;
+  justify-items: center;
+}
+
+section {
+  box-sizing: border-box;
+  width: min(90vw, 40rem);
+  min-height: 100vh;
+  padding: 5vmin;
+
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  user-select: none;
+}
+
+section h2 span:last-of-type {
+  color: var(--purple-accent);
+}
+
+/* Home page */
+
+section#home {
+  place-items: center;
+}
+
+section#home .home-text {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+
+  text-align: center;
+}
+
+section#home h2 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+section#home p {
+  font-size: 1.5rem;
+}
+
+/* Projects section */
+
+section#projects h2 {
+    margin-top: -6rem;
+    margin-left: -7rem;
+}
+
+section#projects ul {
+  display: grid;
+  margin-top: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+
+  list-style: none;
+}
+
+
+section#projects li {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+
+  text-align: left;
+  max-width: 300rem;
+  margin-inline: auto;
+}
+
+section#projects li.move {
+    margin-top: 8rem;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+  
+    text-align: left;
+    max-width: 300rem;
+    margin-inline: auto;
+  }
+
+section#projects img.project {
+  max-width: 600px;
+  max-height: 600px;
+  width: auto;
+  height: auto;
+  margin-left: -300px;
+  object-fit: cover;
+  grid-row: span 3
+}
+
+section#projects .language-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+  
+
+section#projects img.language {
+    width: min(100%, 50px);
+    aspect-ratio: 1;
+    object-position: center;
+    object-fit: contain;
+  
+}
+
+section#projects :is(p.description, a.btn) {
+    grid-column: span 2;
+    margin-left: -100px;
+  }
+
+/* Skills section */
+
+section:is(#skills, #to-learn) ul {
+  
+  list-style: none;
+
+  display: grid;
+  margin-top: 1.2rem; 
+  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+  justify-content: center;
+  gap: 1rem;
+}
+
+section:is(#skills, #to-learn) li {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+
+  width: fit-content;
+  padding: 1.5rem;
+  border: 2px solid var(--purple-accent);
+  border-radius: 0.5em;
+  margin-inline: auto;
+  box-shadow: 0 0 8px 2px var(--purple-shadow-light);
+  background-color: hsl(0 0% 7%);
+
+  transition: 0.3s;
+}
+
+section:is(#skills, #to-learn) li:hover {
+  scale: 1.1;
+}
+
+section:is(#skills, #to-learn) li img {
+  width: min(100%, 100px);
+  aspect-ratio: 1;
+  border-radius: 0.5em;
+
+  object-position: center;
+  object-fit: contain;
+}
+
+/* Skills I wanna learn css */
